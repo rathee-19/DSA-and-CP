@@ -1,2 +1,2 @@
 # DSA-and-CP
-SDE sheet pratice
+SDE sheet practice
