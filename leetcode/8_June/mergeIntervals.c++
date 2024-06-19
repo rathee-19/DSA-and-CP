@@ -75,10 +75,27 @@ vector<vector<int>> mergeSubArray(vector<vector<int>> &intervals)
     }
     return mergeIntervals;
 }
+vector<vector<int>> mergeRevision(vector<vector<int>> &intervals){
+    vector<vector<int>> res;
+    if (intervals.size()==0){
+        return res;
+    }
+    sort(intervals.begin(),intervals.end());
+    
+    for (int i = 0; i < intervals.size(); i++)
+    {
+        if (res.empty() || intervals[i][0]>res.back()[1]){
+            res.push_back(intervals[i]);
+        }else{
+            res.back()[1] = max(res.back()[1],intervals[i][1]);
+        }
+    }
+    return res;
+}
 int main()
 {
     vector<vector<int>> intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-    vector<vector<int>> result = mergeSubArray(intervals);
+    vector<vector<int>> result = mergeRevision(intervals);
     for (int i = 0; i < result.size(); i++)
     {
         for (int j = 0; j < result[i].size(); j++)

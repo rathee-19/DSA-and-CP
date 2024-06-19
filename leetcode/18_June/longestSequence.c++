@@ -15,8 +15,10 @@ int longestConsecutive(vector<int> &nums)
     {
         mp[nums[i]]++;
         cout << mp[nums[i]] << endl;
+
         /* code */
     }
+    
     for (auto i : mp)
     {
         if (i.second > 0)
