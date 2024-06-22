@@ -6,7 +6,6 @@
 #include "LinkedList.h"
 
 using namespace std;
-
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
 {
     if (list1 == NULL)
@@ -17,47 +16,36 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     {
         return list1;
     }
+
+    // Ensure list1 starts with the smaller value
     if (list1->val > list2->val)
     {
         swap(list1, list2);
     }
-    ListNode *temp = list1;  // Initialize temp properly
-    ListNode *res = list1;
 
-    while (list1 && list2)
+    ListNode *res = list1; // The head of the merged list
+
+    while (list1 != NULL && list2 != NULL)
     {
-        cout << list1->val << " " << list2->val << endl;           
-        if (list1 == NULL || list2 == NULL)
+        ListNode *temp = NULL; // Temporary node for swapping
+
+        // Find the position to insert list2's current node
+        while (list1 != NULL && list1->val <= list2->val)
         {
-            break;
-        }
-        if(list1->val > list2->val)
-        {
-            temp->next = list2;
-            temp = list2;
-            list2 = list2->next;
-        }
-        else
-        {
-            cout << "Here" << endl;
-            temp->next = list1;
             temp = list1;
             list1 = list1->next;
         }
-    }
 
-    // Connect the remaining part
-    if (list1)
-    {
-        temp->next = list1;
-    }
-    else
-    {
+        // Link the node from list2 into the merged list
         temp->next = list2;
+
+        // Swap list1 and list2 to keep the smallest element in list1
+        swap(list1, list2);
     }
 
     return res;
 }
+
 int main()
 {
     ListNode *head1 = new ListNode();
