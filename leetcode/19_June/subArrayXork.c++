@@ -32,9 +32,10 @@ int solve(int *A, int n1, int B)
 }
 int main()
 {
-    int A[] = {5, 6, 7, 8, 9};
+    int A[] = {4,2,2,6,4};
     int n = sizeof(A) / sizeof(A[0]);
     cout << solve(A, n, 6) << endl;
+   
 
     return 0;
 }
