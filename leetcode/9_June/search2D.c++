@@ -21,7 +21,7 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
         }
         else
         {
-            binary_search(matrix[i].begin(), matrix[i].end(), target);
+           return binary_search(matrix[i].begin(), matrix[i].end(), target);
 
 
             // while (target < matrix[i][m] && m >= 0)
@@ -45,7 +45,7 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
     return false;
 }
 //flatten into a 1d method remembered from cso 
-bool SearchMatrix(vector<vector<int>> &matrix, int target){
+bool SearchMatrix1(vector<vector<int>> &matrix, int target){
     int n = matrix.size();
     int m = matrix[0].size();
     int start = 0;
@@ -73,7 +73,7 @@ bool SearchMatrix(vector<vector<int>> &matrix, int target){
 int main()
 {
     vector<vector<int>> arr = {{0}};
-    bool ans = SearchMatrix(arr, 1);
+    bool ans = searchMatrix(arr, 0);
     cout << ans << endl;
     return 0;
 }

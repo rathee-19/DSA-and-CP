@@ -49,40 +49,53 @@ int trap(vector<int> &height)
     return fill;
 }
 // solution 2 correct one
-int trap(vector<int> &height)
+int trap1(vector<int> &height)
 {
     int ans = 0;
-    int left;
-    int right;
+
     int n = height.size();
     if (n < 3)
     {
         return ans;
     }
-    left = 0;
-    right = n - 1;
-    int max1 = height[0];
-    int max2 = height[right];
-    int current;
-    
-    
-    while (right > left)
-    {   
-        max1 = max (max1, height [left]);
-        max2 = max(max2, height[right]);
-        current = min (max1, max2);
+    int left = 0;
+    int right = n - 1;
+    int max1 = 0;
+    int max2 = 0;
 
-        
-        if (height [left]>=max1 ){
+    while (right >= left)
+    {
+        if (height[left] <= height[right])
+        {
+            if (height[left] >= max1)
+            {
+                max1 = height[left];
+            }
+            else
+            {
+                ans += max1 - height[left];
+            }
             left++;
         }
-        if heigt
+        else
+        {
+            if (height[right] >= max2)
+            {
+                max2 = height[right];
+            }
+            else
+            {
+                ans += max2 - height[right];
+            }
+            right--;
+        }
     }
+    return ans;
 }
 int main()
 {
     vector<int> height = {4, 2, 0, 3, 2, 5};
-    int ans = trap(height);
+    int ans = trap1(height);
     cout << ans << endl;
     return 0;
 }
