@@ -5,33 +5,41 @@
 #include <bits/stdc++.h>
 #include "LinkedList.h"
 using namespace std;
-Node *copyList(Node *head)
+Node *copyRandomList(Node *head)
 {
-    Node *temp = head;
-
-    Node *copy = new Node(temp->val);
-    Node *start = copy;
-
-    while (temp->next != NULL)
+    Node *dummy = new Node(0);
+    Node *curr = head;
+    Node *head3 = dummy;
+    unordered_map<Node *, Node *> m;
+    while (curr)
     {
-        temp = temp->next;
-        Node *Next = new Node(temp->val);
-        // copy->val = temp->val;
-        copy->next = Next;
-        copy = Next;
+        Node *n = new Node(curr->val);
+        head3->next = n;
+        m[curr] = n;
+        curr = curr->next;
+        head3 = head3->next;
     }
-    temp = head;
-    Node* temp2 = NULL ;
-    temp2->next = start;
-     while(temp->next!= NULL){
-        temp2->random = temp->random ;
-        
+    curr = head;
+    head3 = dummy->next;
 
-
+    while (curr)
+    {
+        Node *value = curr->random;
+        if (value != NULL)
+        {
+            head3->random = m[value];
+        }
+        else
+        {
+            head3->random = NULL;
+        }
+        head3 = head3->next;
+        curr = curr->next;
     }
 
-    return start;
+    return dummy->next;
 }
+
 int main()
 {
     Node *head = new Node(0);
@@ -42,7 +50,7 @@ int main()
     // head->next->next->val = 2;
     head->next->next->next = NULL;
 
-    Node *ans = copyList(head);
+    Node *ans = copyRandomList(head);
     while (ans != NULL)
     {
         cout << ans->val << endl;
