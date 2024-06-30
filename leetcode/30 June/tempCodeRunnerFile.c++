@@ -1,4 +1,7 @@
-, 40}, {4, 1, 30}};   
-    // int n = sizeof(arr) / sizeof(arr[0]);
-    // vector<int> ans = JobScheduling(arr, n);
-    // cout << ans[0] << " " << ans[1] << endl;
+
+    // cout << "The minimum number of coins is " << ans.size() << endl;
+    // cout << "The coins are " << endl;
+    // for (int i = 0; i < ans.size(); i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
